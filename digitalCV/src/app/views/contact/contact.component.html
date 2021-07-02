@@ -1,1 +1,70 @@
-<p>contact works!</p>
+<div class="container mt-5">
+
+    <form #regForm="ngForm" (ngSubmit)="onSubmit(regForm)" >
+
+        <div class="mb-3">
+            <label for="name">Name</label>
+            <input 
+            type="text" 
+            class="form-control" 
+            id="name"
+            name="name"
+            [(ngModel)]="user.name"
+            #name="ngModel"
+            required
+            >
+            <div class="text-danger" *ngIf="name.invalid && (name.touched || name.dirty)">
+                <small>You must enter a name</small>
+            </div>
+        </div>
+
+
+        <div class="mb-3">
+            <label for="email">Email</label>
+            <input 
+            type="text" 
+            class="form-control" 
+            id="email"
+            name="email"
+            [(ngModel)]="user.email"
+            #email="ngModel"
+            required
+            pattern="\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}"
+            >
+            <div class="text-danger" *ngIf="!email.valid && email.touched && email.errors">
+                <small *ngIf="email.errors.required">You must enter an email</small>
+                <small *ngIf="email.errors.pattern">must be a valid email</small>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="title">Title</label>
+            <input 
+            type="text" 
+            class="form-control" 
+            id="title"
+            name="title"
+            [(ngModel)]="user.title"
+            #title="ngModel"
+            required
+            >
+            <div class="text-danger" *ngIf="title.invalid && (title.touched || title.dirty)">
+                <small>You must enter a title</small>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="message">Message</label>
+            <textarea class="form-control" placeholder="Leave a comment here" id="message" style="height: 200px" name="message" [(ngModel)]="user.message" #message= "ngModel" required></textarea>
+            <div class="text-danger" *ngIf="message.invalid && (message.touched || message.dirty)">
+                <small>You must enter a message</small>
+            </div>
+        </div>
+
+        <button class="btn btn-info" [disabled]="regForm.form.invalid">Submit</button>
+    </form>
+
+
+
+
+</div>
