@@ -1,0 +1,12 @@
+.card-profile .card{
+    border: none;
+}
+.card-image{
+    min-width: 275px;   
+}
+.img{
+    min-width: 100%;
+}
+.card{
+    border-radius: 10px 10px 10px 10px;
+}
